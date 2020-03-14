@@ -110,10 +110,18 @@ extension HomeVC: TMDbManagerDelegate{
         refresh()
     }
     
-    func getMoviesForNamedSearchSuccessWith(movies: String) {
+    func getMoviesForNamedSearchSuccessWith(movies: [MovieData]) {
         //ToDo: Hangle what happens when movie search call is successful
         DispatchQueue.main.async {
             self.title = "Results for \(self.searchQuery)"
+        }
+        movies.forEach {
+            guard let title = $0.title, let originalTitle = $0.originalTitle, let thumbnail = $0.posterLink, let synopsis = $0.overview, let rating = $0.voteAverage, let released = $0.releaseDate else {
+                self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
+                return
+            }
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: released)
+            self.searchResults.append(movieData)
         }
         refresh()
     }

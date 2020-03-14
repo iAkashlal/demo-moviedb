@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7688F838241DE4AF007D868C /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F837241DE4AF007D868C /* SearchRequest.swift */; };
 		76D8E2A92417F950006EC30F /* TMDb_Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 76D8E2A72417F950006EC30F /* TMDb_Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76D8E2B0241BE51F006EC30F /* TMDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2AF241BE51F006EC30F /* TMDbManager.swift */; };
 		76E5F621241CCAF60068190F /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5F620241CCAF60068190F /* MovieModel.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7688F837241DE4AF007D868C /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		76D8E2A42417F950006EC30F /* TMDb_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDb_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D8E2A72417F950006EC30F /* TMDb_Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDb_Framework.h; sourceTree = "<group>"; };
 		76D8E2A82417F950006EC30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				76E5F622241CCC870068190F /* DiscoverRequest.swift */,
+				7688F837241DE4AF007D868C /* SearchRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				76E5F625241CD1200068190F /* Utility.swift in Sources */,
 				76E5F621241CCAF60068190F /* MovieModel.swift in Sources */,
 				76E5F623241CCC870068190F /* DiscoverRequest.swift in Sources */,
+				7688F838241DE4AF007D868C /* SearchRequest.swift in Sources */,
 				76D8E2B0241BE51F006EC30F /* TMDbManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

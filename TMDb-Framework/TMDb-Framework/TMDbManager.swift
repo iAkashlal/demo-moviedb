@@ -16,8 +16,8 @@ import Foundation
     func discoverNewMoviesFailedWith(error: String)
     
     //To get a list of movies for a particular search string
-    func getMoviesForNamedSearchSuccessWith(movies: String)   //ToDo: Replace with movies model
-    @objc optional func getMoviesForNamedSearchFailedWith(error: String)
+    func getMoviesForNamedSearchSuccessWith(movies: [MovieData])
+    func getMoviesForNamedSearchFailedWith(error: String)
     
 }
 
@@ -29,7 +29,7 @@ public class TMDbManager: NSObject{
     //Discover URL format - https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&sort_by=popularity.desc&page=\(pageNo)
     private let discoverURL = "/discover/movie"
     //Search URL format - https://api.themoviedb.org/3/search/company?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)
-    private let searchURL = "/search/company"
+    private let searchURL = "/search/movie"
     //Image url format - https://image.tmdb.org/t/p/w500/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg
     private let imageBaseURL = "https://image.tmdb.org/t/p/w500/"
     
@@ -92,10 +92,22 @@ extension TMDbManager{
         
     }
     
+    private func constructSearchURL(forQuery query: String) -> URL{
+        return URL(string: self.baseURL+self.searchURL+"?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)")!
+    }
+    
     private func getMovies(forName query: String){
-        print("Attempting to search for \(query)")
-        //Netowrk call and call getMoviesForNamedSearchSuccessWith / getMoviesForNamedSearchFailedWith
-        self.delegate.getMoviesForNamedSearchSuccessWith(movies: "Demo Success Framework - Named - S")
-        self.delegate.getMoviesForNamedSearchFailedWith?(error: "Demo Success Framework - Named - F")
+        DiscoverRequest.with(url: constructSearchURL(forQuery: query)) { (movieModel, error) in
+            if let error = error{
+                self.delegate.getMoviesForNamedSearchFailedWith(error: error)
+            } else {
+                guard let movies = movieModel?.results else{
+                    self.delegate.discoverNewMoviesFailedWith(error: "Some unknown error occured. Please retry")
+                    return
+                }
+                self.delegate.getMoviesForNamedSearchSuccessWith(movies: movies)
+                self.pageNo += 1
+            }
+        }
     }
 }
