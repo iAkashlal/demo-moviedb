@@ -9,10 +9,14 @@
 import UIKit
 import TMDb_Framework
 
+
+
 class HomeVC: UIViewController {
     
     var searchQuery = ""
     var searchResults: [MovieBinding] = []
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +30,42 @@ class HomeVC: UIViewController {
 //        manager.getMoviesFor(name: self.searchQuery, isInitial: true)
         
     }
+    
+    @IBAction func showDetail(_ sender: Any) {
+        performSegue(withIdentifier: "showDetailsSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailsSegue"{
+            if let detailsVC = segue.destination as? movieDetailsVC{
+                detailsVC.movie = self.searchResults[0]
+            }
+        }
+    }
+    
+    func refresh(){
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
 
 
+}
+
+extension HomeVC: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath)
+        if let cell = cell as? CollectionViewCell{
+            cell.movieTitle.text = searchResults[indexPath.row].title
+            //cell.movieImage = searchResults[indexPath.row].thumbnail
+        }
+        return cell
+    }
+    
 }
 
 extension HomeVC: TMDbManagerDelegate{
@@ -45,8 +83,9 @@ extension HomeVC: TMDbManagerDelegate{
         movies.forEach {
             guard let title = $0.title, let originalTitle = $0.originalTitle, let thumbnail = $0.posterLink, let synopsis = $0.overview, let rating = $0.voteAverage, let released = $0.releaseDate else { return }
             let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: released)
-            searchResults.append(movieData)
+            self.searchResults.append(movieData)
         }
+        refresh()
     }
     
     func getMoviesForNamedSearchSuccessWith(movies: String) {
@@ -55,6 +94,7 @@ extension HomeVC: TMDbManagerDelegate{
             self.title = "Results for \(self.searchQuery)"
         }
         print(movies)
+        refresh()
     }
     func getMoviesForNamedSearchFailedWith(error: String) {
         //ToDo: Hangle what happens when movie call fails
