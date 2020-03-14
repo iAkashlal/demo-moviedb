@@ -14,10 +14,9 @@ class MovieDetailsVC: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
-    @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var ratingsLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    
+    @IBOutlet weak var synopsisTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,9 +26,13 @@ class MovieDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.text = movie.originalTitle
-        overviewLabel.text = movie.synopsis
         ratingsLabel.text = "\(movie.rating)"
         releaseDateLabel.text = movie.released
+        thumbnailImage.sd_setImage(with: URL(string: movie.thumbnail)) { (image, error, cache, url) in
+//            for Debugs
+//            debugPrint(url)
+        }
+        synopsisTextView.text = movie.synopsis
     }
 
     /*

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,13 +12,14 @@
 		7688F7F2241CF50F007D868C /* MovieBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F1241CF50F007D868C /* MovieBinding.swift */; };
 		7688F7F4241CFD1E007D868C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F3241CFD1E007D868C /* Utility.swift */; };
 		7688F7F6241D285D007D868C /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F5241D285D007D868C /* MovieDetailsVC.swift */; };
-		7688F7F8241D2CE7007D868C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F7241D2CE7007D868C /* CollectionViewCell.swift */; };
+		7688F7FF241D417F007D868C /* collectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7FE241D417F007D868C /* collectionViewCell.swift */; };
 		76D8E2BE241BE7DD006EC30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */; };
 		76D8E2C0241BE7DD006EC30F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */; };
 		76D8E2C2241BE7DD006EC30F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2C1241BE7DD006EC30F /* HomeVC.swift */; };
 		76D8E2C5241BE7DD006EC30F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D8E2C3241BE7DD006EC30F /* Main.storyboard */; };
 		76D8E2C7241BE7E1006EC30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D8E2C6241BE7E1006EC30F /* Assets.xcassets */; };
 		76D8E2CA241BE7E1006EC30F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D8E2C8241BE7E1006EC30F /* LaunchScreen.storyboard */; };
+		A4E83CC5E77319FA710A3F0E /* Pods_TMDb_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F842A2487F1DF02C452A16D7 /* Pods_TMDb_Client.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +67,8 @@
 		7688F7F1241CF50F007D868C /* MovieBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBinding.swift; sourceTree = "<group>"; };
 		7688F7F3241CFD1E007D868C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7688F7F5241D285D007D868C /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
-		7688F7F7241D2CE7007D868C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		76D8E2BA241BE7DD006EC30F /* TMDb-Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TMDb-Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7688F7FE241D417F007D868C /* collectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionViewCell.swift; sourceTree = "<group>"; };
+		76D8E2BA241BE7DD006EC30F /* Movie Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76D8E2C1241BE7DD006EC30F /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -77,6 +78,9 @@
 		76D8E2CB241BE7E1006EC30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D8E2E6241BEFD5006EC30F /* TMDb-Framework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "TMDb-Framework"; path = "TMDb Framework/TMDb-Framework"; sourceTree = "<group>"; };
 		76D8E2E7241BEFE3006EC30F /* TMDb-Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "TMDb-Framework.xcodeproj"; path = "TMDb Framework/TMDb-Framework/TMDb-Framework.xcodeproj"; sourceTree = "<group>"; };
+		B07479D6D226EC5D57FFAEB4 /* Pods-TMDb-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb-Client.debug.xcconfig"; path = "Target Support Files/Pods-TMDb-Client/Pods-TMDb-Client.debug.xcconfig"; sourceTree = "<group>"; };
+		F71267EBB3B0FA396BF26411 /* Pods-TMDb-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb-Client.release.xcconfig"; path = "Target Support Files/Pods-TMDb-Client/Pods-TMDb-Client.release.xcconfig"; sourceTree = "<group>"; };
+		F842A2487F1DF02C452A16D7 /* Pods_TMDb_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDb_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				762878B0241BF0E200F95A7E /* TMDb_Framework.framework in Frameworks */,
+				A4E83CC5E77319FA710A3F0E /* Pods_TMDb_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,13 +119,14 @@
 				76D8E2BC241BE7DD006EC30F /* TMDb-Client */,
 				76D8E2BB241BE7DD006EC30F /* Products */,
 				76D8E2DF241BEF66006EC30F /* Frameworks */,
+				83910EE20B3E80DFFEA91D4D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		76D8E2BB241BE7DD006EC30F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76D8E2BA241BE7DD006EC30F /* TMDb-Client.app */,
+				76D8E2BA241BE7DD006EC30F /* Movie Time.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +152,7 @@
 				76D8E2E7241BEFE3006EC30F /* TMDb-Framework.xcodeproj */,
 				762878A3241BF0A500F95A7E /* TMDb-Framework.xcodeproj */,
 				76D8E2E6241BEFD5006EC30F /* TMDb-Framework */,
+				F842A2487F1DF02C452A16D7 /* Pods_TMDb_Client.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,7 +168,7 @@
 		76E5F61C241CC4A40068190F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7688F7F7241D2CE7007D868C /* CollectionViewCell.swift */,
+				7688F7FE241D417F007D868C /* collectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +201,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		83910EE20B3E80DFFEA91D4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B07479D6D226EC5D57FFAEB4 /* Pods-TMDb-Client.debug.xcconfig */,
+				F71267EBB3B0FA396BF26411 /* Pods-TMDb-Client.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,10 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76D8E2CE241BE7E1006EC30F /* Build configuration list for PBXNativeTarget "TMDb-Client" */;
 			buildPhases = (
+				935E3C3E6216D16BC5F3F702 /* [CP] Check Pods Manifest.lock */,
 				76D8E2B6241BE7DD006EC30F /* Sources */,
 				76D8E2B7241BE7DD006EC30F /* Frameworks */,
 				76D8E2B8241BE7DD006EC30F /* Resources */,
 				762878B2241BF0E200F95A7E /* Embed Frameworks */,
+				1D8210F4F7153FCCC33A2384 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,7 +230,7 @@
 			);
 			name = "TMDb-Client";
 			productName = "TMDb-Client";
-			productReference = 76D8E2BA241BE7DD006EC30F /* TMDb-Client.app */;
+			productReference = 76D8E2BA241BE7DD006EC30F /* Movie Time.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -299,6 +317,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D8210F4F7153FCCC33A2384 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TMDb-Client/Pods-TMDb-Client-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TMDb-Client/Pods-TMDb-Client-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TMDb-Client/Pods-TMDb-Client-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		935E3C3E6216D16BC5F3F702 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TMDb-Client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76D8E2B6241BE7DD006EC30F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -306,10 +366,10 @@
 			files = (
 				7688F7F4241CFD1E007D868C /* Utility.swift in Sources */,
 				7688F7F2241CF50F007D868C /* MovieBinding.swift in Sources */,
+				7688F7FF241D417F007D868C /* collectionViewCell.swift in Sources */,
 				7688F7F6241D285D007D868C /* MovieDetailsVC.swift in Sources */,
 				76D8E2C2241BE7DD006EC30F /* HomeVC.swift in Sources */,
 				76D8E2BE241BE7DD006EC30F /* AppDelegate.swift in Sources */,
-				7688F7F8241D2CE7007D868C /* CollectionViewCell.swift in Sources */,
 				76D8E2C0241BE7DD006EC30F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +512,7 @@
 		};
 		76D8E2CF241BE7E1006EC30F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B07479D6D226EC5D57FFAEB4 /* Pods-TMDb-Client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -461,7 +522,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.akashlal.TMDb-Client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Movie Time";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -469,6 +530,7 @@
 		};
 		76D8E2D0241BE7E1006EC30F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F71267EBB3B0FA396BF26411 /* Pods-TMDb-Client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -478,7 +540,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.akashlal.TMDb-Client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Movie Time";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -11,7 +11,7 @@
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="TMDb_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Movie_Time" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="SOE-Zd-oTZ" customClass="CollectionViewCell" customModule="TMDb_Client" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="SOE-Zd-oTZ" customClass="CollectionViewCell" customModule="Movie_Time" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="189" height="229"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="o4L-6T-T0H">
@@ -67,7 +67,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uo-Lb-ohu">
-                                <rect key="frame" x="184" y="743" width="46" height="30"/>
+                                <rect key="frame" x="184" y="492" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -97,31 +97,31 @@
         <!--Movie DetailsVC-->
         <scene sceneID="OVi-xy-DWU">
             <objects>
-                <viewController id="1dO-uV-2vw" customClass="MovieDetailsVC" customModule="TMDb_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1dO-uV-2vw" customClass="MovieDetailsVC" customModule="Movie_Time" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mnO-9E-Oox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlb-qV-IxO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="444"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="495"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MdV-6r-IXV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="444"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="MdV-6r-IXV">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="495"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acr-hm-DbI">
-                                        <rect key="frame" x="16" y="415" width="382" height="21"/>
+                                        <rect key="frame" x="16" y="466" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngc-TM-M8B">
-                                        <rect key="frame" x="16" y="387" width="382" height="24"/>
+                                        <rect key="frame" x="16" y="438" width="382" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaa-BS-e2r">
-                                        <rect key="frame" x="16" y="362" width="382" height="21"/>
+                                        <rect key="frame" x="16" y="413" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                     <constraint firstAttribute="bottom" secondItem="MdV-6r-IXV" secondAttribute="bottom" id="MaG-CE-e12"/>
                                     <constraint firstItem="ngc-TM-M8B" firstAttribute="top" secondItem="Jaa-BS-e2r" secondAttribute="bottom" constant="4" id="b53-I8-Yng"/>
                                     <constraint firstItem="Jaa-BS-e2r" firstAttribute="leading" secondItem="acr-hm-DbI" secondAttribute="leading" id="dqZ-8q-BE6"/>
-                                    <constraint firstAttribute="height" constant="444" id="dx4-ph-ccD"/>
+                                    <constraint firstAttribute="height" constant="495" id="dx4-ph-ccD"/>
                                     <constraint firstItem="MdV-6r-IXV" firstAttribute="top" secondItem="Rlb-qV-IxO" secondAttribute="top" id="eAN-vo-Sfj"/>
                                     <constraint firstItem="ngc-TM-M8B" firstAttribute="trailing" secondItem="acr-hm-DbI" secondAttribute="trailing" id="kOt-cg-fcj"/>
                                     <constraint firstItem="acr-hm-DbI" firstAttribute="leading" secondItem="Rlb-qV-IxO" secondAttribute="leading" constant="16" id="m5l-2e-Qla"/>
@@ -145,19 +145,22 @@
                                     <constraint firstItem="ngc-TM-M8B" firstAttribute="leading" secondItem="acr-hm-DbI" secondAttribute="leading" id="yYn-Ks-A33"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrg-Y7-PWf">
-                                <rect key="frame" x="16" y="544" width="382" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-Q5-qbf">
+                                <rect key="frame" x="16" y="595" width="382" height="257"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="UUw-Q5-qbf" firstAttribute="top" secondItem="Rlb-qV-IxO" secondAttribute="bottom" constant="12" id="5su-1z-96Z"/>
                             <constraint firstItem="kPp-nz-duW" firstAttribute="trailing" secondItem="Rlb-qV-IxO" secondAttribute="trailing" id="6Yp-nJ-Wsp"/>
-                            <constraint firstItem="wrg-Y7-PWf" firstAttribute="leading" secondItem="kPp-nz-duW" secondAttribute="leading" constant="16" id="Mds-ix-XZP"/>
-                            <constraint firstItem="wrg-Y7-PWf" firstAttribute="top" secondItem="Rlb-qV-IxO" secondAttribute="bottom" constant="12" id="Zbs-Sv-Qd1"/>
-                            <constraint firstItem="kPp-nz-duW" firstAttribute="trailing" secondItem="wrg-Y7-PWf" secondAttribute="trailing" constant="16" id="dZE-Kc-xbd"/>
+                            <constraint firstItem="UUw-Q5-qbf" firstAttribute="leading" secondItem="kPp-nz-duW" secondAttribute="leading" constant="16" id="Wnb-Vl-bcD"/>
+                            <constraint firstItem="kPp-nz-duW" firstAttribute="trailing" secondItem="UUw-Q5-qbf" secondAttribute="trailing" constant="16" id="doa-48-0sU"/>
+                            <constraint firstItem="kPp-nz-duW" firstAttribute="bottom" secondItem="UUw-Q5-qbf" secondAttribute="bottom" constant="10" id="hlN-oz-yjK"/>
                             <constraint firstItem="Rlb-qV-IxO" firstAttribute="top" secondItem="kPp-nz-duW" secondAttribute="top" id="jmt-CV-i6O"/>
                             <constraint firstItem="Rlb-qV-IxO" firstAttribute="leading" secondItem="kPp-nz-duW" secondAttribute="leading" id="s5w-tB-4J9"/>
                         </constraints>
@@ -165,9 +168,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="NMc-vO-8so"/>
                     <connections>
-                        <outlet property="overviewLabel" destination="wrg-Y7-PWf" id="xVS-ni-dh7"/>
                         <outlet property="ratingsLabel" destination="Jaa-BS-e2r" id="Y9v-ij-YJu"/>
                         <outlet property="releaseDateLabel" destination="acr-hm-DbI" id="toY-ni-7dP"/>
+                        <outlet property="synopsisTextView" destination="UUw-Q5-qbf" id="gkb-SI-59w"/>
                         <outlet property="thumbnailImage" destination="MdV-6r-IXV" id="hov-Sk-gdC"/>
                         <outlet property="titleLabel" destination="ngc-TM-M8B" id="I0Y-ua-twL"/>
                     </connections>
@@ -195,4 +198,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="poster" width="621" height="666"/>
+    </resources>
 </document>

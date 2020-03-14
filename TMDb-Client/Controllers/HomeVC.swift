@@ -8,7 +8,7 @@
 
 import UIKit
 import TMDb_Framework
-
+import SDWebImage
 
 
 class HomeVC: UIViewController {
@@ -20,8 +20,6 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         //Using the custom built TMDbFramework and its delegate methods in the extension
         let manager = TMDbManager.shared()
@@ -35,10 +33,20 @@ class HomeVC: UIViewController {
         performSegue(withIdentifier: "showDetailsSegue", sender: self)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailsSegue"{
             if let detailsVC = segue.destination as? MovieDetailsVC{
-                detailsVC.movie = self.searchResults[0]
+                detailsVC.movie = self.searchResults.last
             }
         }
     }
@@ -62,6 +70,7 @@ extension HomeVC: UICollectionViewDataSource{
         if let cell = cell as? CollectionViewCell{
             cell.movieTitle.text = searchResults[indexPath.row].title
             //cell.movieImage = searchResults[indexPath.row].thumbnail
+            cell.movieImage.sd_setImage(with: URL(string: searchResults[indexPath.row].thumbnail))
         }
         return cell
     }
