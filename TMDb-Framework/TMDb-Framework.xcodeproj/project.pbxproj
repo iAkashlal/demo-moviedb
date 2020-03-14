@@ -50,9 +50,33 @@
 			children = (
 				76D8E2A72417F950006EC30F /* TMDb_Framework.h */,
 				76D8E2AF241BE51F006EC30F /* TMDbManager.swift */,
+				76E5F619241CC45B0068190F /* Models */,
+				76E5F61B241CC4800068190F /* Services */,
+				76E5F61A241CC4780068190F /* Resources */,
 				76D8E2A82417F950006EC30F /* Info.plist */,
 			);
 			path = "TMDb-Framework";
+			sourceTree = "<group>";
+		};
+		76E5F619241CC45B0068190F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		76E5F61A241CC4780068190F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		76E5F61B241CC4800068190F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

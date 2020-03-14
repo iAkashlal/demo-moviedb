@@ -24,6 +24,14 @@ import Foundation
 public class TMDbManager: NSObject{
     public weak var delegate: TMDbManagerDelegate!
     
+    private let apiKey = "008e213571b77b7b378b8e66f788d0ad"
+    private let baseURL = "https://api.themoviedb.org/3"
+    //Search URL format - https://api.themoviedb.org/3/search/company?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)
+    private let searchURL = "/search/company"
+    //Image url format - https://image.tmdb.org/t/p/w500/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg
+    private let imageBaseURL = "https://image.tmdb.org/t/p/w500/"
+    
+    
     //Singleton DP
     private override init(){
         super.init()

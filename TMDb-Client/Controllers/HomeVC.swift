@@ -10,8 +10,8 @@ import UIKit
 import TMDb_Framework
 
 
-class ViewController: UIViewController {
-
+class HomeVC: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: TMDbManagerDelegate{
+extension HomeVC: TMDbManagerDelegate{
     func getAllMoviesSuccessWith(_ movies: String) {
         //ToDo: Hangle what happens when initial call is successful
         print(movies)
