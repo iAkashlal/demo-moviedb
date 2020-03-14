@@ -10,32 +10,32 @@ import Foundation
 
 public class MovieModel : NSObject, Codable {
 
-    let page : Int?
-    let results : [MovieData]?
-    let totalPages : Int?
-    let totalResults : Int?
+    public let page : Int?
+    public let results : [MovieData]?
+    public let totalPages : Int?
+    public let totalResults : Int?
 
 
 }
 
 public class MovieData : NSObject, Codable {
 
-    let adult : Bool?
-    let backdropPath : String?
-    let genreIds : [Int]?
-    let id : Int?
-    let originalLanguage : String?
-    let originalTitle : String?
-    let overview : String?
-    let popularity : Float?
-    let posterPath : String?
-    let releaseDate : String?
-    let title : String?
-    let video : Bool?
-    let voteAverage : Float?
-    let voteCount : Int?
-    var posterLink: String{
-        "https://image.tmdb.org/t/p/w500/\(posterPath)"
+    public let adult : Bool?
+    public let backdropPath : String?
+    public let genreIds : [Int]?
+    public let id : Int?
+    public let originalLanguage : String?
+    public let originalTitle : String?
+    public let overview : String?
+    public let popularity : Float?
+    public let posterPath : String?
+    public let releaseDate : String?
+    public let title : String?
+    public let video : Bool?
+    public let voteAverage : Float?
+    public let voteCount : Int?
+    public var posterLink: String{
+        "https://image.tmdb.org/t/p/w500\(posterPath!)"
     }
 
 }

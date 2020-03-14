@@ -12,11 +12,11 @@ import Foundation
 @objc public protocol TMDbManagerDelegate{  //Added ObjC to implement optional implementation to protocol functions
     
     //To get list of all movies from API
-    func getAllMoviesSuccessWith(movies: [MovieData])
-    @objc optional func getAllMoviesFailedWith(error: String)
+    func discoverNewMoviesSuccessWith(movies: [MovieData])
+    func discoverNewMoviesFailedWith(error: String)
     
     //To get a list of movies for a particular search string
-    @objc optional func getMoviesForNamedSearchSuccessWith(movies: String)   //ToDo: Replace with movies model
+    func getMoviesForNamedSearchSuccessWith(movies: String)   //ToDo: Replace with movies model
     @objc optional func getMoviesForNamedSearchFailedWith(error: String)
     
 }
@@ -76,13 +76,13 @@ extension TMDbManager{
 //        self.delegate.getAllMoviesFailedWith?("Demo Success Framework - All - F")
         DiscoverRequest.with(url: constructDiscoverURL()) { (movieModel, error) in
             if let error = error{
-                self.delegate.getAllMoviesFailedWith?(error: error)
+                self.delegate.discoverNewMoviesFailedWith(error: error)
             } else {
                 guard let movies = movieModel?.results else {
-                    self.delegate.getAllMoviesFailedWith?(error: "Some unknown error occured. Please retry")
+                    self.delegate.discoverNewMoviesFailedWith(error: "Some unknown error occured. Please retry")
                     return
                 }
-                self.delegate.getAllMoviesSuccessWith(movies: movies)
+                self.delegate.discoverNewMoviesSuccessWith(movies: movies)
                 self.pageNo += 1
             }
         }
@@ -92,7 +92,7 @@ extension TMDbManager{
     private func getMovies(forName query: String){
         print("Attempting to search for \(query)")
         //Netowrk call and call getMoviesForNamedSearchSuccessWith / getMoviesForNamedSearchFailedWith
-        self.delegate.getMoviesForNamedSearchSuccessWith?(movies: "Demo Success Framework - Named - S")
+        self.delegate.getMoviesForNamedSearchSuccessWith(movies: "Demo Success Framework - Named - S")
         self.delegate.getMoviesForNamedSearchFailedWith?(error: "Demo Success Framework - Named - F")
     }
 }
