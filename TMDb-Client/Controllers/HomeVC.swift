@@ -18,16 +18,21 @@ class HomeVC: UIViewController {
         let manager = TMDbManager.shared()
         manager.delegate = self
         manager.getInitialMovies()
-        manager.getMoviesFor(name: "Search")
+        //manager.getMoviesFor(name: "Search")
     }
 
 
 }
 
 extension HomeVC: TMDbManagerDelegate{
-    func getAllMoviesSuccessWith(_ movies: String) {
+    
+    func getAllMoviesSuccessWith(movies: [MovieData]) {
         //ToDo: Hangle what happens when initial call is successful
-        print(movies)
+        for movie in movies{
+            print(movie.title)
+            print(movie.posterLink)
+            print("----------------------------------------------------")
+        }
     }
     func getAllMoviesFailedWith(_ error: String) {
         //ToDo: Hangle what happens when initial call fails

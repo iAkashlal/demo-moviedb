@@ -34,7 +34,7 @@ class DiscoverRequest: NSObject{
                 result = parseMovieResponse(data: data)
                 completionHandler(result.data, result.errorMessage)
             }
-        }
+        }.resume()
     }
 //    class func loginRequestWith(url: URL, param:[String:String], completionHandler: @escaping (String?, String?) -> Void){
 //        var result: (data: String?, errorMessage: String?)

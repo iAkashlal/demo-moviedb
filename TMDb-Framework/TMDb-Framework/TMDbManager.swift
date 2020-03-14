@@ -12,12 +12,12 @@ import Foundation
 @objc public protocol TMDbManagerDelegate{  //Added ObjC to implement optional implementation to protocol functions
     
     //To get list of all movies from API
-    @objc optional func getAllMoviesSuccessWith(_ movies: String)   //ToDo: Replace with movies model
-    @objc optional func getAllMoviesFailedWith(_ error: String)
+    func getAllMoviesSuccessWith(movies: [MovieData])
+    @objc optional func getAllMoviesFailedWith(error: String)
     
     //To get a list of movies for a particular search string
-    @objc optional func getMoviesForNamedSearchSuccessWith(_ movies: String)   //ToDo: Replace with movies model
-    @objc optional func getMoviesForNamedSearchFailedWith(_ error: String)
+    @objc optional func getMoviesForNamedSearchSuccessWith(movies: String)   //ToDo: Replace with movies model
+    @objc optional func getMoviesForNamedSearchFailedWith(error: String)
     
 }
 
@@ -33,6 +33,7 @@ public class TMDbManager: NSObject{
     //Image url format - https://image.tmdb.org/t/p/w500/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg
     private let imageBaseURL = "https://image.tmdb.org/t/p/w500/"
     
+    private var pageNo: Int = 1
     
     //Singleton DP
     private override init(){
@@ -63,17 +64,35 @@ extension TMDbManager{
 
 // MARK:- Private Methods
 extension TMDbManager{
+    
+    private func constructDiscoverURL() -> URL{
+        return URL(string: self.baseURL+self.discoverURL+"?api_key=\(self.apiKey)&sort_by=popularity.desc&page=\(pageNo)")!
+    }
+    
     private func getInitialSetOfMovies(){
         print("Inside Framework")
         //Do Network Call and Call getAllMoviesSuccessWith / getAllMoviesFailedWith
-        self.delegate.getAllMoviesSuccessWith?("Demo Success Framework - All - S")
-        self.delegate.getAllMoviesFailedWith?("Demo Success Framework - All - F")
+//        self.delegate.getAllMoviesSuccessWith?("Demo Success Framework - All - S")
+//        self.delegate.getAllMoviesFailedWith?("Demo Success Framework - All - F")
+        DiscoverRequest.with(url: constructDiscoverURL()) { (movieModel, error) in
+            if let error = error{
+                self.delegate.getAllMoviesFailedWith?(error: error)
+            } else {
+                guard let movies = movieModel?.results else {
+                    self.delegate.getAllMoviesFailedWith?(error: "Some unknown error occured. Please retry")
+                    return
+                }
+                self.delegate.getAllMoviesSuccessWith(movies: movies)
+                self.pageNo += 1
+            }
+        }
+        
     }
     
     private func getMovies(forName query: String){
         print("Attempting to search for \(query)")
         //Netowrk call and call getMoviesForNamedSearchSuccessWith / getMoviesForNamedSearchFailedWith
-        self.delegate.getMoviesForNamedSearchSuccessWith?("Demo Success Framework - Named - S")
-        self.delegate.getMoviesForNamedSearchFailedWith?("Demo Success Framework - Named - F")
+        self.delegate.getMoviesForNamedSearchSuccessWith?(movies: "Demo Success Framework - Named - S")
+        self.delegate.getMoviesForNamedSearchFailedWith?(error: "Demo Success Framework - Named - F")
     }
 }
