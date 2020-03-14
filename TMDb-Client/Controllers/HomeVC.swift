@@ -37,7 +37,7 @@ class HomeVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailsSegue"{
-            if let detailsVC = segue.destination as? movieDetailsVC{
+            if let detailsVC = segue.destination as? MovieDetailsVC{
                 detailsVC.movie = self.searchResults[0]
             }
         }

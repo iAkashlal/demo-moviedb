@@ -97,7 +97,7 @@
         <!--Movie DetailsVC-->
         <scene sceneID="OVi-xy-DWU">
             <objects>
-                <viewController id="1dO-uV-2vw" customClass="movieDetailsVC" customModule="TMDb_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1dO-uV-2vw" customClass="MovieDetailsVC" customModule="TMDb_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mnO-9E-Oox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

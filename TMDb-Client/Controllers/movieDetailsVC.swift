@@ -8,7 +8,7 @@
 
 import UIKit
 
-class movieDetailsVC: UIViewController {
+class MovieDetailsVC: UIViewController {
 
     var movie: MovieBinding!
     
