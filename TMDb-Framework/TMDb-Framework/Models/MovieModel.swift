@@ -34,7 +34,7 @@ public class MovieData : NSObject, Codable {
     public let video : Bool?
     public let voteAverage : Float?
     public let voteCount : Int?
-    public var posterLink: String{
+    public var posterLink: String?{
         "https://image.tmdb.org/t/p/w500\(posterPath!)"
     }
 

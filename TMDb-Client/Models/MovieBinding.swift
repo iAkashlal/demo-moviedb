@@ -8,8 +8,11 @@
 
 import Foundation
 
-class MovieBinding{
-    var title: String?
-    var posterLink: String?
-    var overview: String?
+struct MovieBinding{
+    var title: String
+    var originalTitle: String
+    var thumbnail: String
+    var synopsis: String
+    var rating: Float
+    var released: String
 }

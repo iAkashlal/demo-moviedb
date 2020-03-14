@@ -11,16 +11,20 @@ import TMDb_Framework
 
 class HomeVC: UIViewController {
     
-    var searchQuery = "Joker"
+    var searchQuery = ""
+    var searchResults: [MovieBinding] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let manager = TMDbManager.shared()
-        manager.delegate = self
-        manager.getInitialMovies()
-        manager.getMoviesFor(name: self.searchQuery)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //Using the custom built TMDbFramework and its delegate methods in the extension
+        let manager = TMDbManager.shared()
+        manager.delegate = self //Set delegate to ensure successful callbacks
+        manager.getInitialMovies(isInitial: true)
+//        manager.getMoviesFor(name: self.searchQuery, isInitial: true)
+        
     }
 
 
@@ -29,6 +33,7 @@ class HomeVC: UIViewController {
 extension HomeVC: TMDbManagerDelegate{
     func discoverNewMoviesFailedWith(error: String) {
         //Handle what happens when homepage cant load any movies.
+        self.presentAlert(title: "Error!", description: error)
     }
     
     
@@ -37,12 +42,10 @@ extension HomeVC: TMDbManagerDelegate{
         DispatchQueue.main.async {
             self.title = "What's Trending!"
         }
-        for movie in movies{
-            guard let title = movie.title, let posterURL = URL(string: movie.posterLink) else{
-                return
-            }
-            print(title)
-            print(posterURL)
+        movies.forEach {
+            guard let title = $0.title, let originalTitle = $0.originalTitle, let thumbnail = $0.posterLink, let synopsis = $0.overview, let rating = $0.voteAverage, let released = $0.releaseDate else { return }
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: released)
+            searchResults.append(movieData)
         }
     }
     

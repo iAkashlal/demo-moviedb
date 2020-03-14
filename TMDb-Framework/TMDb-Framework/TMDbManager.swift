@@ -54,10 +54,17 @@ public class TMDbManager: NSObject{
 
 // MARK:- Public Methods
 extension TMDbManager{
-    public func getInitialMovies(){
+    //set isInitial as true only for the first call/search
+    public func getInitialMovies(isInitial: Bool = false){
+        if isInitial {
+            self.pageNo = 1
+        }
         self.getInitialSetOfMovies()
     }
-    public func getMoviesFor(name: String){
+    public func getMoviesFor(name: String, isInitial: Bool = false){
+        if isInitial {
+            self.pageNo = 1
+        }
         self.getMovies(forName: name)
     }
 }
@@ -70,10 +77,6 @@ extension TMDbManager{
     }
     
     private func getInitialSetOfMovies(){
-        print("Inside Framework")
-        //Do Network Call and Call getAllMoviesSuccessWith / getAllMoviesFailedWith
-//        self.delegate.getAllMoviesSuccessWith?("Demo Success Framework - All - S")
-//        self.delegate.getAllMoviesFailedWith?("Demo Success Framework - All - F")
         DiscoverRequest.with(url: constructDiscoverURL()) { (movieModel, error) in
             if let error = error{
                 self.delegate.discoverNewMoviesFailedWith(error: error)
@@ -83,7 +86,7 @@ extension TMDbManager{
                     return
                 }
                 self.delegate.discoverNewMoviesSuccessWith(movies: movies)
-                self.pageNo += 1
+                self.pageNo += 1    //Incrementing page count so that the next search will result in 
             }
         }
         

@@ -10,6 +10,7 @@
 		762878B0241BF0E200F95A7E /* TMDb_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762878AE241BF0B300F95A7E /* TMDb_Framework.framework */; };
 		762878B1241BF0E200F95A7E /* TMDb_Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 762878AE241BF0B300F95A7E /* TMDb_Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7688F7F2241CF50F007D868C /* MovieBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F1241CF50F007D868C /* MovieBinding.swift */; };
+		7688F7F4241CFD1E007D868C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F7F3241CFD1E007D868C /* Utility.swift */; };
 		76D8E2BE241BE7DD006EC30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */; };
 		76D8E2C0241BE7DD006EC30F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */; };
 		76D8E2C2241BE7DD006EC30F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2C1241BE7DD006EC30F /* HomeVC.swift */; };
@@ -61,6 +62,7 @@
 		762878A9241BF0B300F95A7E /* TMDb-Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "TMDb-Framework.xcodeproj"; path = "TMDb-Framework/TMDb-Framework.xcodeproj"; sourceTree = "<group>"; };
 		762878AF241BF0DE00F95A7E /* TMDb-Framework */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "TMDb-Framework"; sourceTree = "<group>"; };
 		7688F7F1241CF50F007D868C /* MovieBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBinding.swift; sourceTree = "<group>"; };
+		7688F7F3241CFD1E007D868C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		76D8E2BA241BE7DD006EC30F /* TMDb-Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TMDb-Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				76D8E2C3241BE7DD006EC30F /* Main.storyboard */,
 				76D8E2C6241BE7E1006EC30F /* Assets.xcassets */,
 				76D8E2C8241BE7E1006EC30F /* LaunchScreen.storyboard */,
+				7688F7F3241CFD1E007D868C /* Utility.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7688F7F4241CFD1E007D868C /* Utility.swift in Sources */,
 				7688F7F2241CF50F007D868C /* MovieBinding.swift in Sources */,
 				76D8E2C2241BE7DD006EC30F /* HomeVC.swift in Sources */,
 				76D8E2BE241BE7DD006EC30F /* AppDelegate.swift in Sources */,
