@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		76D8E2A92417F950006EC30F /* TMDb_Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 76D8E2A72417F950006EC30F /* TMDb_Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76D8E2B0241BE51F006EC30F /* TMDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2AF241BE51F006EC30F /* TMDbManager.swift */; };
+		76E5F621241CCAF60068190F /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5F620241CCAF60068190F /* MovieModel.swift */; };
+		76E5F623241CCC870068190F /* DiscoverRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5F622241CCC870068190F /* DiscoverRequest.swift */; };
+		76E5F625241CD1200068190F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5F624241CD1200068190F /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +19,9 @@
 		76D8E2A72417F950006EC30F /* TMDb_Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDb_Framework.h; sourceTree = "<group>"; };
 		76D8E2A82417F950006EC30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D8E2AF241BE51F006EC30F /* TMDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbManager.swift; sourceTree = "<group>"; };
+		76E5F620241CCAF60068190F /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		76E5F622241CCC870068190F /* DiscoverRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverRequest.swift; sourceTree = "<group>"; };
+		76E5F624241CD1200068190F /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		76E5F619241CC45B0068190F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76E5F620241CCAF60068190F /* MovieModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -68,6 +75,7 @@
 		76E5F61A241CC4780068190F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76E5F624241CD1200068190F /* Utility.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -75,6 +83,7 @@
 		76E5F61B241CC4800068190F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				76E5F622241CCC870068190F /* DiscoverRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -159,6 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76E5F625241CD1200068190F /* Utility.swift in Sources */,
+				76E5F621241CCAF60068190F /* MovieModel.swift in Sources */,
+				76E5F623241CCC870068190F /* DiscoverRequest.swift in Sources */,
 				76D8E2B0241BE51F006EC30F /* TMDbManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

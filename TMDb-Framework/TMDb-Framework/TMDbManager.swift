@@ -26,6 +26,8 @@ public class TMDbManager: NSObject{
     
     private let apiKey = "008e213571b77b7b378b8e66f788d0ad"
     private let baseURL = "https://api.themoviedb.org/3"
+    //Discover URL format - https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&sort_by=popularity.desc&page=\(pageNo)
+    private let discoverURL = "/discover/movie"
     //Search URL format - https://api.themoviedb.org/3/search/company?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)
     private let searchURL = "/search/company"
     //Image url format - https://image.tmdb.org/t/p/w500/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg
