@@ -19,6 +19,8 @@ import Foundation
     func getMoviesForNamedSearchSuccessWith(movies: [MovieData])
     func getMoviesForNamedSearchFailedWith(error: String)
     
+    //Trigger when search results are empty to notify user to search for something else.
+    func searchResultsEmpty()
 }
 
 public class TMDbManager: NSObject{
@@ -34,6 +36,7 @@ public class TMDbManager: NSObject{
     private let imageBaseURL = "https://image.tmdb.org/t/p/w500/"
     
     private var pageNo: Int = 1
+    private var totalPages: Int? = 1
     
     //Singleton DP
     private override init(){
@@ -77,10 +80,21 @@ extension TMDbManager{
     }
     
     private func getInitialSetOfMovies(){
+        if let totalPages = self.totalPages{
+            if self.pageNo > totalPages{
+                return
+            }
+        }
         DiscoverRequest.with(url: constructDiscoverURL()) { (movieModel, error) in
             if let error = error{
                 self.delegate.discoverNewMoviesFailedWith(error: error)
             } else {
+                self.totalPages = movieModel?.totalPages
+                if self.totalPages == 0{
+                    self.pageNo = 1
+                    self.delegate.searchResultsEmpty()
+                    return
+                }
                 guard let movies = movieModel?.results else {
                     self.delegate.discoverNewMoviesFailedWith(error: "Some unknown error occured. Please retry")
                     return
@@ -97,10 +111,21 @@ extension TMDbManager{
     }
     
     private func getMovies(forName query: String){
+        if let totalPages = self.totalPages{
+            if self.pageNo > totalPages{
+                return
+            }
+        }
         DiscoverRequest.with(url: constructSearchURL(forQuery: query)) { (movieModel, error) in
             if let error = error{
                 self.delegate.getMoviesForNamedSearchFailedWith(error: error)
             } else {
+                self.totalPages = movieModel?.totalPages
+                if self.totalPages == 0{
+                    self.pageNo = 1
+                    self.delegate.searchResultsEmpty()
+                    return
+                }
                 guard let movies = movieModel?.results else{
                     self.delegate.discoverNewMoviesFailedWith(error: "Some unknown error occured. Please retry")
                     return
