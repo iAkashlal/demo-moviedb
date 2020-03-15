@@ -18,6 +18,8 @@ class HomeVC: UIViewController {
     var searchResults: [MovieBinding] = []
     var context : Context = .discover
     var manager: TMDbManager!
+    var sortedBy: Sort = .popularity
+    var sortBy: Sort = .popularity
     
     //Search Results Empty view
     @IBOutlet weak var searchResultsEmptyView: UIView!
@@ -27,6 +29,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var searchQueryTextField: UITextField!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loaderView: UIView!
     
     //MARK: - Lifecycle Management
     override func viewDidLoad() {
@@ -51,6 +54,7 @@ class HomeVC: UIViewController {
     
     //MARK: - Custom methods
     func refresh(){
+        loaderShould(show: false)
         DispatchQueue.main.async {
             self.searchResultsEmptyView.alpha = 0
             self.collectionView.reloadData()
@@ -59,6 +63,7 @@ class HomeVC: UIViewController {
     func performNamedSearch(forName name: String){
         self.searchResults.removeAll()
         refresh()
+        loaderShould(show: true)
         if name == ""{
             self.context = .discover
             manager.getInitialMovies(isInitial: true)
@@ -79,7 +84,43 @@ class HomeVC: UIViewController {
     private func showDetail() {
         performSegue(withIdentifier: "showDetailsSegue", sender: self)
     }
-    
+    private func checkSortOrder(){
+        if self.sortedBy == self.sortBy{
+            return
+        }
+        self.sortedBy = self.sortBy
+        if self.context == .discover{
+            manager.updateSort(order: self.sortedBy.rawValue)
+            manager.getInitialMovies(isInitial: true)
+            self.searchResults.removeAll()
+            refresh()
+        } else{
+            sortExistingMovies()
+        }
+    }
+    private func sortExistingMovies(){
+        //ToDo: Sort existing items
+        searchResults = searchResults.sorted(by: { (movie1, movie2) -> Bool in
+            if self.sortedBy == .popularity{
+                return movie1.popularity > movie2.popularity
+            }
+            else {
+                return movie1.rating > movie2.rating
+            }
+        })
+        refresh()
+    }
+    private func loaderShould(show: Bool){
+        if show{
+            DispatchQueue.main.async{
+                self.loaderView.isHidden = false
+            }
+        } else{
+            DispatchQueue.main.async{
+                self.loaderView.isHidden = true
+            }
+        }
+    }
     //MARK: - IBActions
     @IBAction func searchButtonPressed(_ sender: Any) {
         self.searchView.isHidden = false
@@ -97,6 +138,23 @@ class HomeVC: UIViewController {
     @IBAction func cancelSearchAction(_ sender: Any) {
         DispatchQueue.main.async{
             self.searchView.isHidden = true
+            self.searchQueryTextField.resignFirstResponder()
+        }
+    }
+    @IBAction func filterAction(_ sender: Any) {
+        let alertController = UIAlertController(title: "Sort", message: "How would you like your results to be sorted?", preferredStyle: .alert)
+        let popularSortAction = UIAlertAction(title: "Popularity", style: .default) { (action) in
+            self.sortBy = .popularity
+            self.checkSortOrder()
+        }
+        let ratedSortAction = UIAlertAction(title: "Highest Rated", style: .default) { (action) in
+            self.sortBy = .rating
+            self.checkSortOrder()
+        }
+        alertController.addAction(popularSortAction)
+        alertController.addAction(ratedSortAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -160,7 +218,7 @@ extension HomeVC: TMDbManagerDelegate{
                 self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
                 return
             }
-            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown")
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown", popularity: $0.popularity ?? 0.0)
             self.searchResults.append(movieData)
         }
         refresh()
@@ -172,6 +230,7 @@ extension HomeVC: TMDbManagerDelegate{
     
     func getMoviesForNamedSearchSuccessWith(movies: [MovieData]) {
         //ToDo: Hangle what happens when movie search call is successful
+        self.sortExistingMovies()
         DispatchQueue.main.async {
             self.title = "Results for \(self.searchQuery)"
         }
@@ -180,7 +239,7 @@ extension HomeVC: TMDbManagerDelegate{
                 self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
                 return
             }
-            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown")
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown", popularity: $0.popularity ?? 0.0)
             self.searchResults.append(movieData)
         }
         refresh()
@@ -196,6 +255,7 @@ extension HomeVC: TMDbManagerDelegate{
             self.searchResultsEmptyView.alpha = 1
             self.title = "No Movies Found :("
         }
-        
+        searchResults.removeAll()
+        loaderShould(show: false)
     }
 }

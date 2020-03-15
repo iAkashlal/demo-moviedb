@@ -22,3 +22,8 @@ extension UIViewController{
 enum Context{
     case discover, search
 }
+
+enum Sort: String{
+    case popularity = "popularity.desc"
+    case rating = "vote_average.desc"
+}

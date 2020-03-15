@@ -37,6 +37,7 @@ public class TMDbManager: NSObject{
     
     private var pageNo: Int = 1
     private var totalPages: Int? = 1
+    private var sortMode: String = "popularity.desc"
     
     //Singleton DP
     private override init(){
@@ -72,13 +73,16 @@ extension TMDbManager{
         }
         self.getMovies(forName: name)
     }
+    public func updateSort(order: String){
+        self.rememberTo(sortBy: order)
+    }
 }
 
 // MARK:- Private Methods
 extension TMDbManager{
     
     private func constructDiscoverURL() -> URL{
-        return URL(string: self.baseURL+self.discoverURL+"?api_key=\(self.apiKey)&sort_by=popularity.desc&page=\(pageNo)")!
+        return URL(string: self.baseURL+self.discoverURL+"?api_key=\(self.apiKey)&sort_by=\(sortMode)&page=\(pageNo)")!
     }
     
     private func getInitialSetOfMovies(){
@@ -138,5 +142,9 @@ extension TMDbManager{
                 self.pageNo += 1
             }
         }
+    }
+    
+    private func rememberTo(sortBy: String){
+        self.sortMode = sortBy
     }
 }

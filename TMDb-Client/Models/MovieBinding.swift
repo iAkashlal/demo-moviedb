@@ -15,4 +15,5 @@ struct MovieBinding{
     var synopsis: String
     var rating: Float
     var released: String
+    var popularity: Float
 }
