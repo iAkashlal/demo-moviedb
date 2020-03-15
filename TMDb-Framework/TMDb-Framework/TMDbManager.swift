@@ -107,7 +107,7 @@ extension TMDbManager{
     }
     
     private func constructSearchURL(forQuery query: String) -> URL{
-        return URL(string: self.baseURL+self.searchURL+"?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)")!
+        return URL(string: self.baseURL+self.searchURL+"?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)&language=en-US")!
     }
     
     private func getMovies(forName query: String){

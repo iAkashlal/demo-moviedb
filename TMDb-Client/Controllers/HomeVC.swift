@@ -14,6 +14,7 @@ import SDWebImage
 class HomeVC: UIViewController {
     
     var searchQuery = ""
+    var selectedIndex: Int = 1
     var searchResults: [MovieBinding] = []
     var context : Context = .discover
     var manager: TMDbManager!
@@ -60,9 +61,7 @@ class HomeVC: UIViewController {
             manager.getMoviesFor(name: name, isInitial: true)
         }
     }
-    
-    //MARK: - IBActions
-    @IBAction func nextResults(_ sender: Any) {
+    private func nextResults() {
         if self.context == .discover{
             manager.getInitialMovies()
         }
@@ -70,15 +69,18 @@ class HomeVC: UIViewController {
             manager.getMoviesFor(name: self.searchQuery)
         }
     }
-    @IBAction func showDetail(_ sender: Any) {
+    private func showDetail() {
         performSegue(withIdentifier: "showDetailsSegue", sender: self)
     }
+    
+    //MARK: - IBActions
+     
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailsSegue"{
             if let detailsVC = segue.destination as? MovieDetailsVC{
-                detailsVC.movie = self.searchResults.last
+                detailsVC.movie = self.searchResults[self.selectedIndex]
             }
         }
     }
@@ -102,6 +104,26 @@ extension HomeVC: UICollectionViewDataSource{
     
 }
 
+extension HomeVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.row
+        self.showDetail()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == self.searchResults.count-1{
+            self.nextResults()
+        }
+    }
+}
+
+extension HomeVC: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (self.collectionView.frame.maxX/2)-CGFloat(10)
+        return CGSize(width: width, height: width*1.5)
+    }
+}
+
 //MARK: - TMDbManager Framework Delegates
 extension HomeVC: TMDbManagerDelegate{
     func discoverNewMoviesSuccessWith(movies: [MovieData]) {
@@ -114,7 +136,7 @@ extension HomeVC: TMDbManagerDelegate{
                 self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
                 return
             }
-            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releaseDate ?? "Unknown")
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown")
             self.searchResults.append(movieData)
         }
         refresh()
@@ -134,7 +156,7 @@ extension HomeVC: TMDbManagerDelegate{
                 self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
                 return
             }
-            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releaseDate ?? "Unknown")
+            let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: $0.releasedOn ?? "Unknown")
             self.searchResults.append(movieData)
         }
         refresh()

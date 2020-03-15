@@ -41,5 +41,14 @@ public class MovieData : NSObject, Codable {
             return "https://f.v1.n0.cdn.getcloudapp.com/items/0P1A070P2W2D20010a1P/poster.png"
         }
     }
+    public var releasedOn: String?{
+        if let date = releaseDate, date != ""{
+            let dateComponents = date.components(separatedBy: "-")
+            return "\(dateComponents[2])-\(dateComponents[1])-\(dateComponents[0])"
+        }
+        else{
+            return "Unknown"
+        }
+    }
 
 }
