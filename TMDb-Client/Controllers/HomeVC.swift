@@ -19,6 +19,11 @@ class HomeVC: UIViewController {
     var context : Context = .discover
     var manager: TMDbManager!
     
+    //Search Results Empty view
+    @IBOutlet weak var searchResultsEmptyView: UIView!
+    @IBOutlet weak var searchQueryLabel: UILabel!
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - Lifecycle Management
@@ -30,7 +35,7 @@ class HomeVC: UIViewController {
         manager.delegate = self //Set delegate to ensure successful callbacks
         
         //
-        self.performNamedSearch(forName: "Invincible")
+        self.performNamedSearch(forName: "Joker")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,6 +51,7 @@ class HomeVC: UIViewController {
     //MARK: - Custom methods
     func refresh(){
         DispatchQueue.main.async {
+            self.searchResultsEmptyView.alpha = 0
             self.collectionView.reloadData()
         }
     }
@@ -167,6 +173,11 @@ extension HomeVC: TMDbManagerDelegate{
     }
     func searchResultsEmpty() {
         //Handle what happens when search results are empty. PS. Show a view asking user to search for something else.
+        DispatchQueue.main.async{
+            self.searchQueryLabel.text = "\""+self.searchQuery+"\""
+            self.searchResultsEmptyView.alpha = 1
+            self.title = "No Movies Found :("
+        }
         
     }
 }
