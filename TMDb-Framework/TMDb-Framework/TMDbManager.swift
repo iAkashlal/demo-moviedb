@@ -116,7 +116,7 @@ extension TMDbManager{
                 return
             }
         }
-        DiscoverRequest.with(url: constructSearchURL(forQuery: query)) { (movieModel, error) in
+        SearchRequest.with(url: constructSearchURL(forQuery: query)) { (movieModel, error) in
             if let error = error{
                 self.delegate.getMoviesForNamedSearchFailedWith(error: error)
             } else {
