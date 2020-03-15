@@ -35,7 +35,11 @@ public class MovieData : NSObject, Codable {
     public let voteAverage : Float?
     public let voteCount : Int?
     public var posterLink: String?{
-        "https://image.tmdb.org/t/p/w500\(posterPath!)"
+        if let validPosterPath = posterPath{
+            return "https://image.tmdb.org/t/p/w500\(validPosterPath)"
+        }else{
+            return "https://f.v1.n0.cdn.getcloudapp.com/items/0P1A070P2W2D20010a1P/poster.png"
+        }
     }
 
 }

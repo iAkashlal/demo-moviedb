@@ -15,6 +15,8 @@ class HomeVC: UIViewController {
     
     var searchQuery = ""
     var searchResults: [MovieBinding] = []
+    var context : Context = .discover
+    var manager: TMDbManager!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,7 +24,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         
         //Using the custom built TMDbFramework and its delegate methods in the extension
-        let manager = TMDbManager.shared()
+        manager = TMDbManager.shared()
         manager.delegate = self //Set delegate to ensure successful callbacks
         manager.getInitialMovies(isInitial: true)
 //        manager.getMoviesFor(name: self.searchQuery, isInitial: true)
@@ -57,7 +59,15 @@ class HomeVC: UIViewController {
         }
     }
 
-
+    @IBAction func nextResults(_ sender: Any) {
+        if self.context == .discover{
+            manager.getInitialMovies()
+        }
+        else {
+            manager.getMoviesFor(name: self.searchQuery)
+        }
+    }
+    
 }
 
 extension HomeVC: UICollectionViewDataSource{
@@ -90,7 +100,10 @@ extension HomeVC: TMDbManagerDelegate{
             self.title = "What's Trending!"
         }
         movies.forEach {
-            guard let title = $0.title, let originalTitle = $0.originalTitle, let thumbnail = $0.posterLink, let synopsis = $0.overview, let rating = $0.voteAverage, let released = $0.releaseDate else { return }
+            guard let title = $0.title, let originalTitle = $0.originalTitle, let thumbnail = $0.posterLink, let synopsis = $0.overview, let rating = $0.voteAverage, let released = $0.releaseDate else {
+                self.presentAlert(title: "Error", description: "We can't seem to find a poster for a movie you might like! Apologies.")
+                return
+            }
             let movieData = MovieBinding(title: title, originalTitle: originalTitle, thumbnail: thumbnail, synopsis: synopsis, rating: rating, released: released)
             self.searchResults.append(movieData)
         }
@@ -102,7 +115,6 @@ extension HomeVC: TMDbManagerDelegate{
         DispatchQueue.main.async {
             self.title = "Results for \(self.searchQuery)"
         }
-        print(movies)
         refresh()
     }
     func getMoviesForNamedSearchFailedWith(error: String) {

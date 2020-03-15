@@ -36,9 +36,4 @@ class DiscoverRequest: NSObject{
             }
         }.resume()
     }
-//    class func loginRequestWith(url: URL, param:[String:String], completionHandler: @escaping (String?, String?) -> Void){
-//        var result: (data: String?, errorMessage: String?)
-//
-//        completionHandler("Login successful", result.errorMessage)
-//    }
 }

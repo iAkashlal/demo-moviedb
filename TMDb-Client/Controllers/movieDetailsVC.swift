@@ -25,7 +25,7 @@ class MovieDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titleLabel.text = movie.originalTitle
+        titleLabel.text = movie.originalTitle.uppercased()
         ratingsLabel.text = "\(movie.rating)"
         releaseDateLabel.text = movie.released
         thumbnailImage.sd_setImage(with: URL(string: movie.thumbnail)) { (image, error, cache, url) in
