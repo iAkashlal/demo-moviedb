@@ -142,18 +142,19 @@ class HomeVC: UIViewController {
         }
     }
     @IBAction func filterAction(_ sender: Any) {
-        let alertController = UIAlertController(title: "Sort", message: "How would you like your results to be sorted?", preferredStyle: .alert)
-        let popularSortAction = UIAlertAction(title: "Popularity", style: .default) { (action) in
-            self.sortBy = .popularity
-            self.checkSortOrder()
-        }
-        let ratedSortAction = UIAlertAction(title: "Highest Rated", style: .default) { (action) in
-            self.sortBy = .rating
-            self.checkSortOrder()
-        }
-        alertController.addAction(popularSortAction)
-        alertController.addAction(ratedSortAction)
         DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Sort", message: "How would you like your results to be sorted?", preferredStyle: .alert)
+            alertController.view.tintColor = UIColor.init(named: "TintColor")
+            let popularSortAction = UIAlertAction(title: "Popularity", style: .default) { (action) in
+                self.sortBy = .popularity
+                self.checkSortOrder()
+            }
+            let ratedSortAction = UIAlertAction(title: "Highest Rated", style: .default) { (action) in
+                self.sortBy = .rating
+                self.checkSortOrder()
+            }
+            alertController.addAction(popularSortAction)
+            alertController.addAction(ratedSortAction)
             self.present(alertController, animated: true, completion: nil)
         }
     }

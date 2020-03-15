@@ -9,7 +9,7 @@
 import Foundation
 
 //Delegation DP
-@objc public protocol TMDbManagerDelegate{  //Added ObjC to implement optional implementation to protocol functions
+public protocol TMDbManagerDelegate{  //Added ObjC to implement optional implementation to protocol functions
     
     //To get list of all movies from API
     func discoverNewMoviesSuccessWith(movies: [MovieData])
@@ -24,7 +24,7 @@ import Foundation
 }
 
 public class TMDbManager: NSObject{
-    public weak var delegate: TMDbManagerDelegate!
+    public var delegate: TMDbManagerDelegate!
     
     private let apiKey = "008e213571b77b7b378b8e66f788d0ad"
     private let baseURL = "https://api.themoviedb.org/3"

@@ -178,8 +178,8 @@
 		76E5F61D241CC4B80068190F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				76D8E2C3241BE7DD006EC30F /* Main.storyboard */,
 				76D8E2C6241BE7E1006EC30F /* Assets.xcassets */,
+				76D8E2C3241BE7DD006EC30F /* Main.storyboard */,
 				76D8E2C8241BE7E1006EC30F /* LaunchScreen.storyboard */,
 				7688F7F3241CFD1E007D868C /* Utility.swift */,
 			);
