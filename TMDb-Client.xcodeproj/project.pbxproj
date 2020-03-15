@@ -15,6 +15,12 @@
 		7688F836241DE4AF007D868C /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688F835241DE4AF007D868C /* MovieCell.swift */; };
 		7688F839241DE4AF007D868C /* Pods_TMDb_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F842A2487F1DF02C452A16D7 /* Pods_TMDb_Client.framework */; };
 		7688F83A241DE4AF007D868C /* Pods_TMDb_Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F842A2487F1DF02C452A16D7 /* Pods_TMDb_Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7688F842241E74BC007D868C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F83C241E74BA007D868C /* 1.png */; };
+		7688F843241E74BC007D868C /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F83D241E74BB007D868C /* 4.png */; };
+		7688F844241E74BC007D868C /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F83E241E74BB007D868C /* 5.png */; };
+		7688F845241E74BC007D868C /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F83F241E74BB007D868C /* 6.png */; };
+		7688F846241E74BC007D868C /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F840241E74BB007D868C /* 3.png */; };
+		7688F847241E74BC007D868C /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7688F841241E74BC007D868C /* 2.png */; };
 		76D8E2BE241BE7DD006EC30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */; };
 		76D8E2C0241BE7DD006EC30F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */; };
 		76D8E2C2241BE7DD006EC30F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8E2C1241BE7DD006EC30F /* HomeVC.swift */; };
@@ -70,6 +76,12 @@
 		7688F7F3241CFD1E007D868C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7688F7F5241D285D007D868C /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
 		7688F835241DE4AF007D868C /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		7688F83C241E74BA007D868C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		7688F83D241E74BB007D868C /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		7688F83E241E74BB007D868C /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		7688F83F241E74BB007D868C /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		7688F840241E74BB007D868C /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		7688F841241E74BC007D868C /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		76D8E2BA241BE7DD006EC30F /* Movie Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +126,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7688F83B241E74A2007D868C /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				7688F83C241E74BA007D868C /* 1.png */,
+				7688F841241E74BC007D868C /* 2.png */,
+				7688F840241E74BB007D868C /* 3.png */,
+				7688F83D241E74BB007D868C /* 4.png */,
+				7688F83E241E74BB007D868C /* 5.png */,
+				7688F83F241E74BB007D868C /* 6.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		76D8E2B1241BE7DD006EC30F = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +161,7 @@
 		76D8E2BC241BE7DD006EC30F /* TMDb-Client */ = {
 			isa = PBXGroup;
 			children = (
+				7688F83B241E74A2007D868C /* Screenshots */,
 				76D8E2BD241BE7DD006EC30F /* AppDelegate.swift */,
 				76D8E2BF241BE7DD006EC30F /* SceneDelegate.swift */,
 				76E5F61E241CC4CA0068190F /* Models */,
@@ -311,8 +337,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7688F845241E74BC007D868C /* 6.png in Resources */,
 				76D8E2CA241BE7E1006EC30F /* LaunchScreen.storyboard in Resources */,
+				7688F842241E74BC007D868C /* 1.png in Resources */,
+				7688F846241E74BC007D868C /* 3.png in Resources */,
 				76D8E2C7241BE7E1006EC30F /* Assets.xcassets in Resources */,
+				7688F844241E74BC007D868C /* 5.png in Resources */,
+				7688F847241E74BC007D868C /* 2.png in Resources */,
+				7688F843241E74BC007D868C /* 4.png in Resources */,
 				76D8E2C5241BE7DD006EC30F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
