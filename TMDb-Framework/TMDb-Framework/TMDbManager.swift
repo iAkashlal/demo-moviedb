@@ -61,12 +61,14 @@ extension TMDbManager{
     public func getInitialMovies(isInitial: Bool = false){
         if isInitial {
             self.pageNo = 1
+            self.totalPages = 1
         }
         self.getInitialSetOfMovies()
     }
     public func getMoviesFor(name: String, isInitial: Bool = false){
         if isInitial {
             self.pageNo = 1
+            self.totalPages = 1
         }
         self.getMovies(forName: name)
     }
@@ -107,7 +109,9 @@ extension TMDbManager{
     }
     
     private func constructSearchURL(forQuery query: String) -> URL{
-        return URL(string: self.baseURL+self.searchURL+"?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)&language=en-US")!
+        let modifiedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = self.baseURL+self.searchURL+"?api_key=\(self.apiKey)&query=\(modifiedQuery)&page=\(pageNo)&language=en-US"
+        return URL(string: urlString)!
     }
     
     private func getMovies(forName query: String){

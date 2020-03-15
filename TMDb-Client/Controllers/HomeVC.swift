@@ -23,6 +23,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var searchResultsEmptyView: UIView!
     @IBOutlet weak var searchQueryLabel: UILabel!
     
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchQueryTextField: UITextField!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -34,8 +36,7 @@ class HomeVC: UIViewController {
         manager = TMDbManager.shared()
         manager.delegate = self //Set delegate to ensure successful callbacks
         
-        //
-        self.performNamedSearch(forName: "Joker")
+        self.performNamedSearch(forName: "")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,8 +57,8 @@ class HomeVC: UIViewController {
         }
     }
     func performNamedSearch(forName name: String){
-        self.searchQuery = name
         self.searchResults.removeAll()
+        refresh()
         if name == ""{
             self.context = .discover
             manager.getInitialMovies(isInitial: true)
@@ -80,7 +81,24 @@ class HomeVC: UIViewController {
     }
     
     //MARK: - IBActions
-     
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        self.searchView.isHidden = false
+    }
+    
+    @IBAction func searchAction(_ sender: Any) {
+        self.searchQuery = self.searchQueryTextField.text ?? ""
+        DispatchQueue.main.async {
+            self.searchQueryTextField.text = ""
+            self.searchView.isHidden = true
+            self.searchQueryTextField.resignFirstResponder()
+        }
+        self.performNamedSearch(forName: self.searchQuery)
+    }
+    @IBAction func cancelSearchAction(_ sender: Any) {
+        DispatchQueue.main.async{
+            self.searchView.isHidden = true
+        }
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
