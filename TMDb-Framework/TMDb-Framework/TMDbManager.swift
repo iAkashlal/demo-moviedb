@@ -9,7 +9,7 @@
 import Foundation
 
 //Delegation DP
-public protocol TMDbManagerDelegate{  //Added ObjC to implement optional implementation to protocol functions
+public protocol TMDbManagerDelegate{
     
     //To get list of all movies from API
     func discoverNewMoviesSuccessWith(movies: [MovieData])
@@ -28,7 +28,7 @@ public class TMDbManager: NSObject{
     
     private let apiKey = "008e213571b77b7b378b8e66f788d0ad"
     private let baseURL = "https://api.themoviedb.org/3"
-    //Discover URL format - https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&sort_by=popularity.desc&page=\(pageNo)
+    //Discover URL format - https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&sort_by=\(self.sortMode)&page=\(pageNo)
     private let discoverURL = "/discover/movie"
     //Search URL format - https://api.themoviedb.org/3/search/company?api_key=\(self.apiKey)&query=\(query)&page=\(pageNo)
     private let searchURL = "/search/movie"
@@ -60,19 +60,15 @@ public class TMDbManager: NSObject{
 extension TMDbManager{
     //set isInitial as true only for the first call/search
     public func getInitialMovies(isInitial: Bool = false){
-        if isInitial {
-            self.pageNo = 1
-            self.totalPages = 1
-        }
+        resetState(isInitial: isInitial)
         self.getInitialSetOfMovies()
     }
     public func getMoviesFor(name: String, isInitial: Bool = false){
-        if isInitial {
-            self.pageNo = 1
-            self.totalPages = 1
-        }
+        resetState(isInitial: isInitial)
         self.getMovies(forName: name)
     }
+    
+    //To change sort order from API, could be better to check with appropriate values as per the API documentation.
     public func updateSort(order: String){
         self.rememberTo(sortBy: order)
     }
@@ -81,12 +77,21 @@ extension TMDbManager{
 // MARK:- Private Methods
 extension TMDbManager{
     
+    //Call this function to reset all counters
+    private func resetState(isInitial: Bool){
+        if isInitial {
+            self.pageNo = 1
+            self.totalPages = 1
+        }
+    }
+    
     private func constructDiscoverURL() -> URL{
         return URL(string: self.baseURL+self.discoverURL+"?api_key=\(self.apiKey)&sort_by=\(sortMode)&page=\(pageNo)")!
     }
     
     private func getInitialSetOfMovies(){
         if let totalPages = self.totalPages{
+            //Check if user has viewed all entries. If so, no need to hit the network.
             if self.pageNo > totalPages{
                 return
             }
@@ -119,6 +124,7 @@ extension TMDbManager{
     }
     
     private func getMovies(forName query: String){
+        //Check if user has viewed all entries. If so, no need to hit the network.
         if let totalPages = self.totalPages{
             if self.pageNo > totalPages{
                 return
