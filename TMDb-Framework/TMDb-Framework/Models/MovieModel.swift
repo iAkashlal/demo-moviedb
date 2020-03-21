@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MovieModel : NSObject, Codable {
+public struct MovieModel : Codable {
 
     public let page : Int?
     public let results : [MovieData]?
@@ -18,7 +18,7 @@ public class MovieModel : NSObject, Codable {
 
 }
 
-public class MovieData : NSObject, Codable {
+public struct MovieData : Codable {
 
     public let adult : Bool?
     public let backdropPath : String?

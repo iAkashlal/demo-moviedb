@@ -26,7 +26,7 @@ public protocol TMDbManagerDelegate{
 public class TMDbManager: NSObject{
     public var delegate: TMDbManagerDelegate!
     
-    private let apiKey = "008e213571b77b7b378b8e66f788d0ad"
+    private let apiKey = "53eafbc1ab15fcd88324c96a958d6ca5"
     private let baseURL = "https://api.themoviedb.org/3"
     //Discover URL format - https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&sort_by=\(self.sortMode)&page=\(pageNo)
     private let discoverURL = "/discover/movie"

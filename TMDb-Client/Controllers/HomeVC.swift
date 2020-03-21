@@ -111,14 +111,8 @@ class HomeVC: UIViewController {
         refresh()
     }
     private func loaderShould(show: Bool){
-        if show{
-            DispatchQueue.main.async{
-                self.loaderView.isHidden = false
-            }
-        } else{
-            DispatchQueue.main.async{
-                self.loaderView.isHidden = true
-            }
+        DispatchQueue.main.async{ [weak self] in
+            self?.loaderView.isHidden = !show
         }
     }
     //MARK: - IBActions
